@@ -1,7 +1,7 @@
 /* GIRO – service worker (funcionamento offline).
    Estratégia: tudo do próprio app é guardado no aparelho; abre mesmo sem internet.
    Ao publicar uma nova versão, mude VERSAO aqui e em js/app.js. */
-const VERSAO = '0.1.0';
+const VERSAO = '0.2.0';
 const CACHE = 'giro-v' + VERSAO;
 const ARQUIVOS = [
   './',
