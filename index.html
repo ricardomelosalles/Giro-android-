@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GIRO – Ciclismo Indoor</title>
+<meta name="description" content="GIRO: aplicativo de ciclismo indoor para bicicletas ergométricas, spinning e simuladores. Supere seus limites.">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GIRO">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Segurança: o app só carrega recursos do próprio endereço. Quando a IA conectada (Etapa 12) for adicionada,
+     o endereço do backend será liberado em connect-src. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/giro.css">
+</head>
+<body>
+
+<!-- Abertura com a logo oficial (sem alterações) -->
+<div id="splash" role="presentation">
+  <img src="img/logo-giro.png" alt="GIRO – Ciclismo Indoor. Supere seus limites." width="720" height="748">
+</div>
+
+<div id="app" class="app" hidden>
+  <header class="topo">
+    <span class="topo-nome">Ciclismo Indoor</span>
+    <span id="chipRede" class="chip" data-estado="verificando" role="status" aria-live="polite">Verificando…</span>
+  </header>
+
+  <main class="conteudo" id="conteudo">
+
+    <section class="heroi" aria-labelledby="tituloHeroi">
+      <img class="heroi-logo" src="img/logo-giro.png" alt="Logo oficial GIRO – Ciclismo Indoor" width="720" height="748">
+      <h1 id="tituloHeroi" class="sr-only">GIRO – Ciclismo Indoor</h1>
+      <p class="heroi-texto">Aplicativo profissional para acompanhar atividades em bicicletas ergométricas, bicicletas de spinning e simuladores compatíveis.</p>
+      <div class="barra-velocidade" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <div class="coluna">
+      <section class="cartao" aria-labelledby="tEstado">
+        <h2 id="tEstado" class="cartao-titulo">Estado do aplicativo</h2>
+        <dl class="estado">
+          <div><dt>Versão</dt><dd id="versao">–</dd></div>
+          <div><dt>Etapa em desenvolvimento</dt><dd id="etapaAtual">–</dd></div>
+          <div><dt>Uso offline</dt><dd id="estadoOffline" data-estado="verificando">Verificando…</dd></div>
+          <div><dt>Instalação</dt><dd id="estadoInstalacao">–</dd></div>
+        </dl>
+
+        <button id="btnInstalar" class="btn-principal" type="button" hidden>Instalar o GIRO</button>
+        <p id="dicaIos" class="dica" hidden>No iPhone ou iPad: toque em <b>Compartilhar</b> e depois em <b>Adicionar à Tela de Início</b>.</p>
+        <p id="dicaHttps" class="dica" hidden>Para instalar e usar offline, abra o GIRO por um endereço <b>https</b> (por exemplo, GitHub Pages) ou por <b>localhost</b>.</p>
+      </section>
+
+      <section class="cartao" aria-labelledby="tEtapas">
+        <h2 id="tEtapas" class="cartao-titulo">Etapas do projeto</h2>
+        <ol id="listaEtapas" class="etapas"></ol>
+      </section>
+    </div>
+  </main>
+
+  <div id="avisoAtualizacao" class="aviso" role="alert" hidden>
+    <span>Nova versão do GIRO disponível.</span>
+    <button id="btnAtualizar" type="button">Atualizar</button>
+  </div>
+</div>
+
+<noscript><p class="noscript">O GIRO precisa do JavaScript ativado para funcionar.</p></noscript>
+<script src="js/app.js"></script>
+</body>
+</html>
