@@ -1,0 +1,135 @@
+/* GIRO – identidade visual: preto e grafite, prata e branco, verde neon.
+   Estilo tecnológico, moderno e premium. Sem fontes externas (funciona offline). */
+:root{
+  --preto:#000000;
+  --grafite:#0f1215;
+  --grafite-2:#161a1e;
+  --linha:#262c32;
+  --prata:#d9dee3;
+  --prata-suave:#9aa3ab;
+  --branco:#ffffff;
+  --verde:#a6f000;       /* verde neon da logo */
+  --verde-escuro:#7fbf00;
+  --amarelo:#f2e200;
+  --laranja:#ff8a00;
+  --erro:#ff5a4d;
+  --raio:18px;
+  --fonte:"Segoe UI",Roboto,"Helvetica Neue",Arial,system-ui,sans-serif;
+  --seguro-topo:env(safe-area-inset-top,0px);
+  --seguro-base:env(safe-area-inset-bottom,0px);
+  --seguro-esq:env(safe-area-inset-left,0px);
+  --seguro-dir:env(safe-area-inset-right,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--preto)}
+body{
+  min-height:100vh;min-height:100dvh;background:var(--preto);color:var(--prata);
+  font:400 16px/1.5 var(--fonte);overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+
+/* Abertura */
+#splash{
+  position:fixed;inset:0;z-index:50;background:var(--preto);display:flex;align-items:center;justify-content:center;
+  padding:24px;transition:opacity .45s ease,visibility .45s ease;
+}
+#splash img{width:min(78vw,52vh,420px);height:auto;animation:entrada .7s ease both}
+#splash.saindo{opacity:0;visibility:hidden}
+@keyframes entrada{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+
+/* Estrutura */
+.app{
+  min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
+  padding:calc(var(--seguro-topo) + 8px) calc(var(--seguro-dir) + 16px) calc(var(--seguro-base) + 24px) calc(var(--seguro-esq) + 16px);
+  max-width:1100px;margin:0 auto;
+}
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 6px}
+.topo-nome{
+  font-style:italic;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;color:var(--prata-suave);
+}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:99px;
+  background:var(--grafite-2);border:1px solid var(--linha);color:var(--prata);
+}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--prata-suave)}
+.chip[data-estado="online"]::before{background:var(--verde);box-shadow:0 0 8px var(--verde)}
+.chip[data-estado="offline"]::before{background:var(--laranja)}
+
+.conteudo{display:grid;gap:20px;flex:1;align-content:start;padding-top:8px}
+.coluna{display:grid;gap:16px;align-content:start;min-width:0}
+
+/* Herói com a logo */
+.heroi{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.heroi-logo{width:min(86%,360px);height:auto}
+.heroi-texto{max-width:34ch;color:var(--prata-suave);font-size:.98rem}
+.barra-velocidade{display:flex;gap:5px;width:min(86%,360px)}
+.barra-velocidade i{
+  flex:1;height:8px;border-radius:2px;transform:skewX(-20deg);
+  background:linear-gradient(90deg,var(--verde),var(--amarelo) 55%,var(--laranja));opacity:.28;
+}
+.barra-velocidade i:nth-child(-n+3){opacity:1}
+.barra-velocidade i:nth-child(4){opacity:.7}
+
+/* Cartões */
+.cartao{background:linear-gradient(180deg,var(--grafite-2),var(--grafite));border:1px solid var(--linha);border-radius:var(--raio);padding:18px}
+.cartao-titulo{
+  font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.85rem;color:var(--branco);
+  padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--linha);
+}
+.cartao-titulo::before{content:"";display:inline-block;width:18px;height:4px;margin-right:10px;vertical-align:middle;transform:skewX(-20deg);background:var(--verde)}
+
+.estado{display:grid;gap:10px}
+.estado>div{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.estado dt{color:var(--prata-suave);font-size:.92rem}
+.estado dd{font-weight:600;color:var(--branco);text-align:right}
+.estado dd[data-estado="pronto"]{color:var(--verde)}
+.estado dd[data-estado="indisponivel"]{color:var(--laranja)}
+
+.btn-principal{
+  width:100%;margin-top:16px;min-height:52px;padding:14px 18px;border-radius:14px;
+  background:var(--verde);color:#0a0d00;font-weight:800;font-style:italic;letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 0 22px rgba(166,240,0,.28);
+}
+.btn-principal:active{transform:translateY(1px);background:var(--verde-escuro)}
+.dica{margin-top:14px;font-size:.9rem;color:var(--prata-suave)}
+.dica b{color:var(--prata)}
+
+.etapas{list-style:none;display:grid;gap:8px}
+.etapas li{display:flex;gap:12px;align-items:center;font-size:.95rem;color:var(--prata-suave)}
+.etapas .num{
+  flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+  font-weight:800;font-size:.82rem;background:var(--grafite);border:1px solid var(--linha);color:var(--prata-suave);
+}
+.etapas li[data-estado="atual"]{color:var(--branco);font-weight:600}
+.etapas li[data-estado="atual"] .num{background:var(--verde);border-color:var(--verde);color:#0a0d00}
+.etapas .selo{margin-left:auto;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);font-weight:700;white-space:nowrap}
+
+/* Aviso de atualização */
+.aviso{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--seguro-base) + 16px);z-index:40;
+  display:flex;align-items:center;gap:14px;padding:10px 12px 10px 16px;border-radius:14px;max-width:calc(100vw - 32px);
+  background:var(--grafite-2);border:1px solid var(--verde);box-shadow:0 8px 28px rgba(0,0,0,.6);
+}
+.aviso button{padding:8px 14px;border-radius:10px;background:var(--verde);color:#0a0d00;font-weight:800}
+
+.noscript{padding:24px;text-align:center;color:var(--branco)}
+
+/* Tablet e telas maiores: duas colunas */
+@media (min-width:760px){
+  .app{padding-left:calc(var(--seguro-esq) + 32px);padding-right:calc(var(--seguro-dir) + 32px)}
+  .conteudo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start;padding-top:24px}
+  .heroi{position:sticky;top:24px}
+  .heroi-logo{width:min(100%,460px)}
+  .barra-velocidade{width:min(100%,460px)}
+}
+@media (min-width:760px) and (orientation:landscape) and (max-height:600px){
+  .heroi{position:static}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #splash,#splash img{animation:none;transition:none}
+}
